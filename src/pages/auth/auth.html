@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class='contentBackground'>
+<ion-list>
+  <div>
+    <h5 class='title'>Welcome to IEEE chat app </h5>
+   </div> 
+  <ion-item>
+    <ion-label>Username</ion-label>
+    <ion-input type="text" [(ngModel)]='username' value='mobigaurav@gmail.com'></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Password</ion-label>
+    <ion-input type="password" [(ngModel)]='password' value='qaIEEE'></ion-input>
+  </ion-item>
+
+</ion-list>
+<div padding>
+  <button ion-button block color="secondary" (click)="Authenticate()">Sign In</button>
+</div>
+</ion-content>
+

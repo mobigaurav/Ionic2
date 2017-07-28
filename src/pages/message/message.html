@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Chat</ion-title>
+    <ion-buttons end>
+     <button ion-button (click)="openMessageModal()" end>
+           <ion-icon name="chatbubbles"></ion-icon>
+        </button>
+    </ion-buttons>   
+  </ion-navbar>
+</ion-header>
+
+<ion-content  class='contentBackground'>
+  <ion-refresher (ionRefresh)="refreshPage($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+ <ion-list class="messages list">
+  <button ion-item *ngFor="let item of messages" (click)="viewMessage(item)" class="messages-item contentBackground">
+
+
+                <ion-avatar item-start>
+                  <img src="{{ (!item.chatParticipants[0].pictureUrl || item.chatParticipants[0].pictureUrl.indexOf('default-profile-picture.gif') > -1) ? 'assets/img/default-profile-picture.gif' : item.chatParticipants[0].pictureUrl}}"
+                       alt="avatar"/>
+                </ion-avatar>
+            
+             <div class="text">
+                   <h2 [innerHTML]="item.chatParticipantLabel"></h2>
+                    <p>
+                        <!--<i [ngClass]="{'read-flag': item.readFlag == 'N'}" class="flaticon-check"></i> -->
+                        <span *ngIf="item.recentMsg.author.siebelNr == siebCustId">You: </span>
+                        <span *ngIf="item.recentMsg.author.siebelNr != siebCustId">{{item.recentMsg.author.firstName}}: </span>{{ item.recentMsg.desc }}
+                        
+                   </p>
+                </div>
+               <!--<div class="icon">
+                  <span class="item-note">{{item.recentMsg.createts}}</span>
+              </div>            -->
+  </button>  
+</ion-list>
+</ion-content>

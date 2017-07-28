@@ -1,9 +1,6 @@
-page-home {
+.html,body{
 
-}
-
-.toolbar-background {
-  background-color: #1a75ff;
+    background-color: #2980B9 !important ;
 }
 
 .contentBackground{
@@ -12,4 +9,13 @@ page-home {
      display: flex!important;
      align-content: center!important;
      align-items: center!important;
+}
+
+.title{
+
+    text-align:center;
+}
+
+.toolbar-background {
+  background-color: #1a75ff
 }

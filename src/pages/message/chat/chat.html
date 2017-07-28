@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{chatParticipantLabel}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+   <ion-item *ngFor="let messagevalue of messages">
+            <!--<div class="image-wrap">
+                <img width="50" ng-src="{{ (!message.author.imageUrl || message.author.imageUrl.indexOf('default-profile-picture.gif') > -1) ? 'assets/img/default-profile-picture.gif' : message.author.imageUrl | trustUrl }}" 
+                     ng-click="showRequestedUserProfile(message.author.url, message.author.encSiebelNr); $event.stopPropagation()"
+                     on-error-src="assets/img/default-profile-picture.gif" alt="avatar"/>
+            </div>-->
+            <ion-avatar item-start>
+                    <!--<img src="{{(!item.imageUrl || item.imageUrl.indexOf('default-profile-picture.gif') > -1) ? 'assets/img/default-profile-picture.gif' : item.imageUrl }}"
+                            alt="avatar"/>-->
+                    <img  src="{{ (!messagevalue.author.imageUrl || messagevalue.author.imageUrl.indexOf('default-profile-picture.gif') > -1) ? 'assets/img/default-profile-picture.gif' : messagevalue.author.imageUrl}}" 
+                      alt="avatar"/>       
+            </ion-avatar>
+            <div class="message-text padding">
+                <!--<div *ngIf="message.author.url !== userInfo.userProfile.vanityProfileUrl"><strong>{{ message.author.firstName + ' ' + message.author.lastName }}</strong></div>-->
+                <h4>{{messagevalue.desc}}</h4>
+                <!--<div *ngIf="messagevalue.autoLinkerList.length">
+                    <div *ngFor="let link of messagevalue.autoLinkerList" class="ogp-block-item" (click)="openLink(link.websiteUrl)">
+                        <div class="img-wrap pull-left"><img src="{{link.imageUrl}}"></div>
+                        <div class="ogp-title"><h3>{{ link.title }}</h3>
+                            <a>{{ link.websiteUrl }}</a>
+                        </div>
+                        <div class="col ogp-description"><p>{{ link.description}}</p></div>
+                    </div>
+                </div>-->
+            </div>
+            
+           
+   </ion-item>
+</ion-content>
+      <ion-footer class='backgroundcolorfooter'>
+        <form  #form="ngForm" class="message-form"> 
+            <ion-item>
+            <input type="text" name='fistaname' placeholder="Type a message..." [(ngModel)]="newMessage.message" />
+            <button [disabled]="!newMessage.message.length" small class="message-form-button" (click)="replyMessage(newMessage.message);">Send <ion-icon name="send"></ion-icon></button>
+            </ion-item>
+        </form>
+      </ion-footer>
+
+
+ 
